@@ -41,7 +41,7 @@ public class DataLoader implements CommandLineRunner {
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
-        user = new User("boss@boss.com", "password", "Boss", "Man", true, "boss");
+        user = new User("boss@boss.com", "password", "Boss", "Man", true, "bossman");
         user.setRoles(Arrays.asList(superRole));
         userRepository.save(user);
 
@@ -53,6 +53,9 @@ public class DataLoader implements CommandLineRunner {
         courseRepository.save(course);
 
         course = new Course("Calculus", "Carol Henley", "Rate of Change of the Rate of Change", 3);
+        courseRepository.save(course);
+
+        course = new Course("War of the Worlds", "H. G. Wells", "English fiction.", 3);
         courseRepository.save(course);
 
         course = new Course("Freshman English", "Geraldine Pegram", "Jearn your landuage children", 3);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Secure Page</title>
@@ -47,7 +48,10 @@
                     <span th:text="${role.role}"></span>
                 </div><br />
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-2"><b>Authenticated as:</b></div>
+            <div class="col-md-2">
+                <div sec:authorize="isAuthenticated()"><span sec:authentication="name"></span></div>
+            </div>
             <div class="col-md-2"><span>&nbsp&#9670;&nbsp</span></div>
         </div>
         <br />

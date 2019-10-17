@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>List</title>
@@ -24,7 +25,8 @@
 
     <!-- Process HTML Page -->
     <br />
-    <a href="/add">Add a Course</a>
+    <div sec:authorize="hasAuthority('ADMIN')"><a href="/add">Add a Course</a></div>
+    <div sec:authorize="hasAuthority('SUPER')"><a href="/add">Add a Course</a></div>
     <br /><br />
 
     <div class="row">
@@ -34,15 +36,28 @@
         <div class="col-md-1"></div>
         <div class="col-md-6"><b>Actions</b></div>
     </div>
-    <div th:each="course : ${courses}" >
-        <div class="row">
-            <div class="col-md-2"><span th:text="${course.title}"></span></div>
-            <div class="col-md-2"><span th:text="${course.instructor}"></span></div>
-            <div class="col-md-1"><span th:text="${course.credit}"></span></div>
-            <div class="col-md-1"><span>&#9670;</span></div>
-            <div class="col-md-2"><a th:href="@{/update/{id}(id=${course.id})}">Update</a></div>
-            <div class="col-md-2"><a th:href="@{/detail/{id}(id=${course.id})}">Details</a></div>
-            <div class="col-md-2"><a th:href="@{/delete/{id}(id=${course.id})}">Delete</a></div>
+    <div sec:authorize="hasAnyAuthority('ADMIN','SUPER')">
+        <div th:each="course : ${courses}" >
+            <div class="row">
+                <div class="col-md-2"><span th:text="${course.title}"></span></div>
+                <div class="col-md-2"><span th:text="${course.instructor}"></span></div>
+                <div class="col-md-1"><span th:text="${course.credit}"></span></div>
+                <div class="col-md-1"><span>&#9670;</span></div>
+                <div class="col-md-2"><a th:href="@{/detail/{id}(id=${course.id})}">Details</a></div>
+                <div class="col-md-2"><a th:href="@{/update/{id}(id=${course.id})}">Update</a></div>
+                <div class="col-md-2"><a th:href="@{/delete/{id}(id=${course.id})}">Delete</a></div>
+            </div>
+        </div>
+    </div>
+    <div sec:authorize="hasAnyAuthority('USER')">
+        <div th:each="course : ${courses}" >
+            <div class="row">
+                <div class="col-md-2"><span th:text="${course.title}"></span></div>
+                <div class="col-md-2"><span th:text="${course.instructor}"></span></div>
+                <div class="col-md-1"><span th:text="${course.credit}"></span></div>
+                <div class="col-md-1"><span>&#9670;</span></div>
+                <div class="col-md-6"><a th:href="@{/detail/{id}(id=${course.id})}">Details</a></div>
+            </div>
         </div>
     </div>
     <br />
