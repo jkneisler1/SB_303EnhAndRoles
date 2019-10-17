@@ -76,6 +76,15 @@ public class HomeController {
         return "/list";
     }
 
+    @PostMapping("/processUser")
+    public String processUser(@Valid User user, BindingResult result)  {
+        if (result.hasErrors()) {
+            return "securityform";
+        }
+        userRepository.save(user);
+        return "redirect:/";
+    }
+
     @RequestMapping("/detail/{id}")
     public String showCourse(@PathVariable("id") long id, Model model) {
         //if (courseRepository.findAllById(id).isPresent()) {

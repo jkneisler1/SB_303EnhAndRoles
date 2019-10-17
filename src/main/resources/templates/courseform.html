@@ -12,67 +12,68 @@
 </head>
 <body>
 
-<!-- Navigation Bar -->
-<div th:replace="base :: navlinks"></div>
-<!-- End Navigation Bar -->
+    <!-- Navigation Bar -->
+    <div th:replace="base :: navlinks"></div>
+    <!-- End Navigation Bar -->
 
-<div class="container">
+    <div class="container">
 
-    <!-- Header -->
-    <h2>Course Form</h2>
-    <!-- End Header -->
+        <!-- Header -->
+        <h2>Course Form</h2>
+        <!-- End Header -->
 
-    <!-- Process HTML Page -->
-    <br />
-    <form action="#" th:action="@{/process}" th:object="${course}" method="post">
-        <input type="hidden" th:field="*{id}" />
-        <div class="row">
-            <div class="col-md-2"><b>Title</b></div>
-            <div class="col-md-10"><input type="text" th:field="*{title}" /></div>
-            <br />
-        </div>
-        <div class="row">
-            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
-            <br />
-        </div>
-        <div class="row">
-            <div class="col-md-2"><b>Instructor</b></div>
-            <div class="col-md-10"><input type="text" th:field="*{instructor}" /></div>
-            <br />
-        </div>
-        <div class="row">
-            <span th:if="${#fields.hasErrors('instructor')}" th:errors="*{instructor}"></span>
-            <br />
-        </div>
-        <div class="row">
-            <div class="col-md-2"><b>Description:</b></div>
-            <div class="col-md-10"><textarea rows="3" cols="40" th:field="*{description}" /></div>
-            <br />
-        </div>
-        <div class="row">
-            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
-            <br />
-        </div>
-        <div class="row">
-            <div class="col-md-2"><b>Credits</b></div>
-            <div class="col-md-10"><input type="text" th:field="*{credit}" /></div>
-            <br />
-        </div>
-        <div class="row">
-            <span th:if="${#fields.hasErrors('credit')}" th:errors="*{credit}"></span>
-            <br />
-        </div>
+        <!-- Process HTML Page -->
         <br />
-        <input type="submit" value="Submit" />
-    </form>
-    <div th:replace="base :: logout"></div>
-    <!-- End Process HTML Page-->
+        <form action="#" th:action="@{/process}" th:object="${course}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="row">
+                <div class="col-md-2"><b>Title</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{title}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-2"><b>Instructor</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{instructor}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('instructor')}" th:errors="*{instructor}"></span>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-2"><b>Description:</b></div>
+                <div class="col-md-10"><textarea rows="3" cols="40" th:field="*{description}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-2"><b>Credits</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{credit}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('credit')}" th:errors="*{credit}"></span>
+                <br />
+            </div>
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+        <br />
+        <div th:replace="base :: logout"></div>
+        <!-- End Process HTML Page-->
 
-    <!-- Footer -->
-    <div th:replace="base :: footer"></div>
-    <!-- End Footer -->
+        <!-- Footer -->
+        <div th:replace="base :: footer"></div>
+        <!-- End Footer -->
 
-</div>
+    </div>
 
 <!-- JS code: insert this just before the </body> tag  (this version fits on a page) -->
 <div th:fragment="jsFooter">

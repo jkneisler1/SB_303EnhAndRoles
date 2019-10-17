@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Form</title>
+
+    <!-- Link to the bootstrap stylesheet:  insert this just before the </head> tag  (this version fits on a page) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!-- END Link to the bootstrap stylesheet -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div th:replace="base :: navlinks">
+    <!-- End Navigation Bar -->
+
+    <div class="container">
+        <!-- Header -->
+        <br />
+        <h2>Security Form</h2>
+        <br />
+        <!-- End Header -->
+
+        <!-- Process HTML Page -->
+        <form action="#" th:action="@{/processUser}" th:object="${user}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="row">
+                <div class="col-md-2"><b>First Name:</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{firstName}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-2"><b>Last Name:</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{lastName}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-2"><b>Email:</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{email}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-2"><b>User Name</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{username}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-2"><b>Enabled</b></div>
+                <div class="col-md-10"><input type="text" th:field="*{enabled}" /></div>
+                <br />
+            </div>
+            <div class="row">
+                <span th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></span>
+                <br />
+            </div>
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+        <br />
+        <div th:replace="base :: logout"></div>
+        <!-- Process HTML Page -->
+
+        <!-- Footer -->
+        <div th:replace="base :: footer"></div>
+        <!-- End Footer -->
+    </div>
+
+    <!--Bootstrap JS-->
+    <div th:replace="base :: jsfooter"></div>
+    <!--Bootstrap JS-->
+
+</body>
+</html>
